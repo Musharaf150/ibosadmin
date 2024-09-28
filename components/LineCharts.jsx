@@ -22,9 +22,9 @@ const renderLegend = (props) => {
         padding: 0,
         display: "flex",
         flexDirection: "column",
-        alignItems: "flex-end", // Align items to the right
-        position: "absolute", // Position it absolutely
-        top: 0, // Top right corner
+        alignItems: "flex-end", 
+        position: "absolute", 
+        top: 0, 
         right: 0,
       }}
     >

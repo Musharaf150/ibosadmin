@@ -1,10 +1,8 @@
 import LineCharts from "@/components/LineCharts"
-import Loader from "@/components/Loader"
 import PieCharts from "@/components/PieCharts"
 import ReusableCard from "@/components/ReusbaleCard"
 import TodoList from "@/components/TodoList"
 import WeatherWidget from "@/components/WeatherWidget"
-import { Suspense } from "react"
 
 export const data = [
   { name: "Jan", sales: 4000, revenue: 2400 },

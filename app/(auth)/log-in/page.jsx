@@ -1,13 +1,13 @@
 'use client';
 
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useRouter } from 'next/navigation';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { Card, CardHeader, CardTitle, CardDescription, CardContent, CardFooter } from '@/components/ui/card';
 import Link from 'next/link';
-import { signIn } from '@/lib/appwrite';
+import { checkAuth, signIn } from '@/lib/appwrite';
 import { loginSchema } from '@/lib/validator';
 
 export default function LogIn() {
@@ -18,6 +18,18 @@ export default function LogIn() {
   const [errors, setErrors] = useState({});
   const [isSubmitting, setIsSubmitting] = useState(false);
   const router = useRouter();
+
+  useEffect(() => {
+    const authenticate = async () => {
+      const user = await checkAuth();
+      if (user) {
+        router.push('/dashboard');
+      }
+    };
+
+    authenticate();
+  }, [router]);
+
 
   const handleSubmit = async (e) => {
     e.preventDefault();
