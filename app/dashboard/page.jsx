@@ -1,3 +1,4 @@
+import FetchUser from "@/components/FetchUser"
 import LineCharts from "@/components/LineCharts"
 import PieCharts from "@/components/PieCharts"
 import ReusableCard from "@/components/ReusbaleCard"
@@ -14,11 +15,14 @@ export const data = [
   { name: "Jul", sales: 3490, revenue: 4300 },
 ];
 
-export default function Dashboard() {
+const Dashboard = () => {
+
+
+
   return (
     <>
-    <div className=" grid gap-4 md:grid-cols-2 lg:grid-cols-4">
-      <ReusableCard title='Users' value={100}/>
+    <div className="grid gap-4 lg:grid-cols-2 xl:grid-cols-4">
+      <FetchUser/>
       <ReusableCard title='On going Events' value={500}/> 
       <TodoList/>
       <WeatherWidget/>
@@ -37,3 +41,5 @@ export default function Dashboard() {
 </>
   )
 }
+
+export default Dashboard;

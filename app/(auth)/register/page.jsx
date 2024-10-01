@@ -6,7 +6,7 @@ import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
 import { Card, CardHeader, CardTitle, CardDescription, CardContent, CardFooter } from "@/components/ui/card"
 import Link from 'next/link'
-import { checkAuth, createUser } from '@/lib/appwrite'
+import { checkAuth, createUser, signIn } from '@/lib/appwrite'
 import { useEffect, useState } from 'react'
 
 
@@ -41,8 +41,9 @@ export default function Register() {
 
     try {
       const result = await createUser(form.email, form.password, form.username);
+      await signIn(form.email, form.password);
 
-      router.push('/log-in')
+      router.push('/dashboard')
 
     } catch (error) {
       alert(error.message)

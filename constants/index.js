@@ -3,20 +3,27 @@ export const Links = [
     id: 1,
     title: "Dashboard",
     route: '/dashboard',
-    imageurl: './images/home.svg'
+    imageurl: '../images/home.svg'
   },
   {
     id: 2,
     title: "Users",
     route: '/dashboard/users',
-    imageurl: './images/user.svg'
+    imageurl: '../images/user.svg'
   },
   {
     id: 3,
     title: "Blogs",
     route: '/dashboard/events',
-    imageurl: './images/deposit.svg'
+    imageurl: '../images/deposit.svg'
+  },
+  {
+    id: 4,
+    title: "Parent",
+    route: '/dashboard/parent',
+    imageurl: '../images/deposit.svg'
   }
+  
 ]
 
 export const users = [
@@ -76,6 +83,21 @@ export async function getPosts() {
     return [];
   }
 }
+
+export async function getOnePost(id) {
+  if (!id) {
+    throw new Error('ID is required to fetch a post');
+  }
+
+  try {
+    const response = await axios.get(`https://jsonplaceholder.typicode.com/posts/${id}`);
+    return response.data;
+  } catch (error) {
+    console.error('Error fetching post:', error.message || error);
+    return null; // Return null instead of an array, as we're fetching a single post
+  }
+}
+
 
 
 export const weatherData = {

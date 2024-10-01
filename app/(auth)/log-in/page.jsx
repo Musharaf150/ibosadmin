@@ -51,6 +51,7 @@ export default function LogIn() {
 
     try {
       await signIn(form.email, form.password);
+    
       router.push('/dashboard');
     } catch (error) {
       alert(error.message);
